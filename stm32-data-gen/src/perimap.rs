@@ -111,6 +111,7 @@ pub static PERIMAP: RegexMap<(&str, &str, &str)> = RegexMap::new(&[
     ("STM32G0.*:ADC:.*", ("adc", "g0", "ADC")),
     ("STM32U0.*:ADC:.*", ("adc", "u0", "ADC")),
     ("STM32G4.*:ADC:.*", ("adc", "g4", "ADC")),
+    ("STM32C0.*:ADC\\d*_COMMON:.*", ("adccommon", "v4", "ADC_COMMON")),
     ("STM32G0.*:ADC\\d*_COMMON:.*", ("adccommon", "v3", "ADC_COMMON")),
     ("STM32U0.*:ADC\\d*_COMMON:.*", ("adccommon", "v3", "ADC_COMMON")),
     ("STM32G4.*:ADC\\d*_COMMON:.*", ("adccommon", "v4", "ADC_COMMON")),

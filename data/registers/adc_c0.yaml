@@ -218,6 +218,7 @@ fieldset/CFGR2:
     description: oversampling ratio
     bit_offset: 2
     bit_size: 3
+    enum: OVSR
   - name: OVSS
     description: oversampling shift
     bit_offset: 5
@@ -478,9 +479,36 @@ enum/RES:
   - name: Bits10
     description: 10-bit resolution
     value: 1
-  - name: Bits08
+  - name: Bits8
     description: 8-bit resolution
     value: 2
-  - name: Bits06
+  - name: Bits6
     description: 6-bit resolution
     value: 3
+enum/OVSR:
+  bit_size: 3
+  variants:
+  - name: Ratio2x
+    description: 2x
+    value: 0
+  - name: Ratio4x
+    description: 4x
+    value: 1
+  - name: Ratio8x
+    description: 8x
+    value: 2
+  - name: Ratio16x
+    description: 16x
+    value: 3
+  - name: Ratio32x
+    description: 32x
+    value: 4
+  - name: Ratio64x
+    description: 64x
+    value: 5
+  - name: Ratio128x
+    description: 128x
+    value: 6
+  - name: Ratio256x
+    description: 256x
+    value: 7
