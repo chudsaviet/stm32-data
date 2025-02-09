@@ -145,14 +145,17 @@ fieldset/CFGR1:
     description: direct memory access configuration
     bit_offset: 1
     bit_size: 1
+    enum: DMACFG
   - name: SCANDIR
     description: scan sequence direction
     bit_offset: 2
     bit_size: 1
+    enum: SCANDIR
   - name: RES
     description: data resolution
     bit_offset: 3
     bit_size: 2
+    enum: RES
   - name: ALIGN
     description: data alignment
     bit_offset: 5
@@ -165,10 +168,12 @@ fieldset/CFGR1:
     description: external trigger enable and polarity selection
     bit_offset: 10
     bit_size: 2
+    enum: EXTEN
   - name: OVRMOD
     description: overrun management mode
     bit_offset: 12
     bit_size: 1
+    enum: OVRMOD
   - name: CONT
     description: single / continuous conversion mode
     bit_offset: 13
@@ -193,6 +198,7 @@ fieldset/CFGR1:
     description: enable the watchdog on a single channel or on all channels
     bit_offset: 22
     bit_size: 1
+    enum: AWD1SGL
   - name: AWD1EN
     description: analog watchdog enable
     bit_offset: 23
@@ -289,6 +295,7 @@ fieldset/CR:
     description: ADC group regular conversion stop
     bit_offset: 4
     bit_size: 1
+    enum: ADSTP
   - name: ADVREGEN
     description: ADC voltage regulator enable
     bit_offset: 28
@@ -405,3 +412,75 @@ fieldset/SMPR:
     description: channel sampling time selection
     bit_offset: 8
     bit_size: 23
+enum/SCANDIR:
+  bit_size: 1
+  variants:
+  - name: Up
+    description: Upward scan (from CHSEL0 to CHSEL22).
+    value: 0
+  - name: Back
+    description: Backward scan (from CHSEL22 to CHSEL0).
+    value: 1
+enum/ADSTP:
+  bit_size: 1
+  variants:
+  - name: Stop
+    description: Stop conversion of channel
+    value: 1
+enum/AWD1SGL:
+  bit_size: 1
+  variants:
+  - name: All
+    description: Analog watchdog 1 enabled on all channels
+    value: 0
+  - name: Single
+    description: Analog watchdog 1 enabled on single channel selected in AWD1CH
+    value: 1
+enum/DMACFG:
+  bit_size: 1
+  variants:
+  - name: DMA_OneShot
+    description: DMA One Shot Mode selected
+    value: 0
+  - name: DMA_Circular
+    description: DMA Circular Mode selected
+    value: 1
+enum/EXTEN:
+  bit_size: 2
+  variants:
+  - name: Disabled
+    description: Trigger detection disabled
+    value: 0
+  - name: RisingEdge
+    description: Trigger detection on the rising edge
+    value: 1
+  - name: FallingEdge
+    description: Trigger detection on the falling edge
+    value: 2
+  - name: BothEdges
+    description: Trigger detection on both the rising and falling edges
+    value: 3
+enum/OVRMOD:
+  bit_size: 1
+  variants:
+  - name: Preserve
+    description: Preserve DR register when an overrun is detected
+    value: 0
+  - name: Overwrite
+    description: Overwrite DR register when an overrun is detected
+    value: 1
+enum/RES:
+  bit_size: 2
+  variants:
+  - name: Bits12
+    description: 12-bit resolution
+    value: 0
+  - name: Bits10
+    description: 10-bit resolution
+    value: 1
+  - name: Bits08
+    description: 8-bit resolution
+    value: 2
+  - name: Bits06
+    description: 6-bit resolution
+    value: 3
