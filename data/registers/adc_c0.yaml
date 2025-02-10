@@ -235,6 +235,7 @@ fieldset/CFGR2:
     description: clock mode
     bit_offset: 30
     bit_size: 2
+    enum: CKMODE
 fieldset/CHSELR:
   description: channel selection register [alternate]
   fields:
@@ -512,3 +513,18 @@ enum/OVSR:
   - name: Ratio256x
     description: 256x
     value: 7
+enum/CKMODE:
+  bit_size: 2
+  variants:
+  - name: SYSCLK
+    description: SYSCLK or HSIKER clock
+    value: 0
+  - name: PCLK_div_2
+    description: PCLK divided by 2
+    value: 1
+  - name: PCLK_div_4
+    description: PCLK divided by 4
+    value: 2
+  - name: PCLK
+    description: PCLK
+    value: 3
