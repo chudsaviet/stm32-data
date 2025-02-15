@@ -61,10 +61,6 @@ block/ADC:
     description: Calibration factor
     byte_offset: 180
     fieldset: CALFACT
-  - name: CCR
-    description: common configuration register
-    byte_offset: 776
-    fieldset: CCR
 fieldset/AWD1TR:
   description: watchdog threshold register
   fields:
@@ -119,21 +115,7 @@ fieldset/CALFACT:
     description: calibration factor in single-ended mode
     bit_offset: 0
     bit_size: 7
-fieldset/CCR:
-  description: common configuration register
-  fields:
-  - name: PRESC
-    description: prescaler
-    bit_offset: 18
-    bit_size: 4
-  - name: VREFEN
-    description: VREFINT enable
-    bit_offset: 22
-    bit_size: 1
-  - name: TSEN
-    description: Temperature sensor enable
-    bit_offset: 23
-    bit_size: 1
+
 fieldset/CFGR1:
   description: configuration register 1
   fields:
@@ -413,7 +395,10 @@ fieldset/SMPR:
   - name: SMPSEL
     description: channel sampling time selection
     bit_offset: 8
-    bit_size: 23
+    bit_size: 1
+    array:
+      len: 22
+      stride: 0
 enum/SCANDIR:
   bit_size: 1
   variants:
