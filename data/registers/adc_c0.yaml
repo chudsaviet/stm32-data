@@ -142,6 +142,7 @@ fieldset/CFGR1:
     description: data alignment
     bit_offset: 5
     bit_size: 1
+    enum: ALIGN
   - name: EXTSEL
     description: external trigger selection
     bit_offset: 6
@@ -222,9 +223,12 @@ fieldset/CHSELR:
   description: channel selection register [alternate]
   fields:
   - name: CHSEL
-    description: Channel-x selection
+    description: ADC channel selection for canversion
     bit_offset: 0
-    bit_size: 23
+    bit_size: 1
+    array:
+      len: 22
+      stride: 0
 fieldset/CHSELR_1:
   description: channel selection register CHSELRMOD = 1 in ADC_CFGR1
   fields:
@@ -291,7 +295,7 @@ fieldset/CR:
 fieldset/DR:
   description: group regular conversion data register
   fields:
-  - name: RDATA
+  - name: DATA
     description: group regular conversion data
     bit_offset: 0
     bit_size: 16
@@ -542,3 +546,12 @@ enum/SAMPLE_TIME:
   - name: Cycles640_5
     description: 640.5 clock cycles
     value: 7
+enum/ALIGN:
+  bit_size: 1
+  variants:
+  - name: Right
+    description: Right alignment
+    value: 0
+  - name: Left
+    description: Left alignment
+    value: 1
