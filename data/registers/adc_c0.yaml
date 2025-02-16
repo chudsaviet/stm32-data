@@ -48,6 +48,7 @@ block/ADC:
   - name: DR
     description: data register
     byte_offset: 64
+    access: Read
     fieldset: DR
   - name: AWD2CR
     description: analog Watchdog 2 Configuration register
@@ -115,7 +116,6 @@ fieldset/CALFACT:
     description: calibration factor in single-ended mode
     bit_offset: 0
     bit_size: 7
-
 fieldset/CFGR1:
   description: configuration register 1
   fields:
@@ -289,10 +289,10 @@ fieldset/CR:
     bit_offset: 31
     bit_size: 1
 fieldset/DR:
-  description: ADC group regular conversion data register
+  description: group regular conversion data register
   fields:
-  - name: regularDATA
-    description: ADC group regular conversion data
+  - name: RDATA
+    description: group regular conversion data
     bit_offset: 0
     bit_size: 16
 fieldset/IER:
@@ -388,10 +388,12 @@ fieldset/SMPR:
     description: sampling time selection 1
     bit_offset: 0
     bit_size: 3
+    enum: SAMPLE_TIME
   - name: SMP2
     description: sampling time selection 2 
     bit_offset: 4
     bit_size: 3
+    enum: SAMPLE_TIME
   - name: SMPSEL
     description: channel sampling time selection
     bit_offset: 8
@@ -513,3 +515,30 @@ enum/CKMODE:
   - name: PCLK
     description: PCLK
     value: 3
+enum/SAMPLE_TIME:
+  bit_size: 3
+  variants:
+  - name: Cycles2_5
+    description: 2.5 clock cycles
+    value: 0
+  - name: Cycles6_5
+    description: 6.5 clock cycles
+    value: 1
+  - name: Cycles12_5
+    description: 12.5 clock cycles
+    value: 2
+  - name: Cycles24_5
+    description: 24.5 clock cycles
+    value: 3
+  - name: Cycles47_5
+    description: 47.5 clock cycles
+    value: 4
+  - name: Cycles92_5
+    description: 92.5 clock cycles
+    value: 5
+  - name: Cycles247_5
+    description: 247.5 clock cycles
+    value: 6
+  - name: Cycles640_5
+    description: 640.5 clock cycles
+    value: 7
